@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary | Mama & Mami</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f0c29;
+            --accent-glow: #302b63;
+            --text-silver: #bbbbbb;
+            --lavender: #951949;
+            --heart-color: #9d8df1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            color: var(--text-silver);
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Scroll Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--lavender);
+            margin: 10px 0;
+            text-shadow: 0 0 20px rgba(195, 190, 240, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+
+        .photo-container {
+            display: flex;
+            gap: 25px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .photo-card {
+            width: 280px;
+            height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            transition: transform 0.6s ease;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.03);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            max-width: 800px;
+            line-height: 1.5;
+            color: var(--text-silver);
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            font-weight: 300;
+            border-top: 1px solid rgba(195, 190, 240, 0.3);
+            padding-top: 30px;
+            font-size: 1.2rem;
+        }
+
+        /* Heart Rain Styles */
+        .heart {
+            position: fixed;
+            top: -10vh;
+            font-size: 1.5rem;
+            color: var(--heart-color);
+            user-select: none;
+            pointer-events: none;
+            z-index: 9999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+
+
+        /* Heart Animation */
+        .heart-particle {
+            position: fixed;
+            top: -50px;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1000;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <div class="subtitle reveal">A Special Milestone</div>
+        <h1 class="reveal">Happy Anniversary</h1>
+        <p class="reveal" style="font-size: 1.4rem; color: var(--text-silver);">Dearest Mama & Mami</p>
+        <div class="scroll-hint reveal">SCROLL DOWN</div>
+    </section>
+
+    <section>
+        <div class="subtitle reveal">A Lifetime of Memories</div>
+        <div class="photo-container">
+            <div class="photo-card reveal">
+                <img src="WhatsApp Image 2026-02-18 at 9.38.37 PM.jpeg" alt="Mama and Mami Photo 1">
+            </div>
+            <div class="photo-card reveal">
+                <img src="WhatsApp Image 2026-02-18 at 9.39.23 PM.jpeg" alt="Mama and Mami Photo 2">
+            </div>
+        </div>
+    </section>
+
+    <section id="final-section">
+        <div class="quote-text reveal">
+            "Your love is the anchor that keeps our family steady. May your bond continue to bloom like a garden in spring—beautiful, resilient, and full of life."
+        </div>
+        <div class="reveal footer-note">
+            Wishing you many more decades of health and joy.<br><br>
+            <strong>With all my love, Vaibhav Yadav</strong>
+        </div>
+    </section>
+
+    <!-- <script>
+        // Intersection Observer for Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger Heart Rain when final section is visible
+                    if(entry.target.id === 'final-section') {
+                        startHeartRain();
+                    }
+                }
+            });
+        }, { threshold: 0.25 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Heart Rain Function
+        function startHeartRain() {
+            const heartIcons = ['❤', '💜', '✨', '🤍'];
+            
+            // Create a burst of hearts
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                    
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.opacity = Math.random();
+                    heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                    
+                    document.body.appendChild(heart);
+
+                    // Remove heart after animation
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 150);
+            }
+        }
+    </script> -->
+
+    <script>
+        // Smooth Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Simplified Heart Rain - starts automatically after 2 seconds or on scroll
+        function createHeart() {
+            const heart = document.createElement('div');
+            const icons = ['❤', '💜', '✨'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heart.className = 'heart-particle';
+            
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            heart.style.opacity = Math.random();
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Trigger hearts continuously
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
